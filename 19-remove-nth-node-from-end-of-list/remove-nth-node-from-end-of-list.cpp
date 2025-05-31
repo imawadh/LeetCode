@@ -10,28 +10,19 @@
  */
 class Solution {
 public:
-     int sizeOf(ListNode* temp){
-        if(temp==nullptr) return 0;
-        return 1+sizeOf(temp->next);
-    }
     ListNode* removeNthFromEnd(ListNode* head, int n) {
-        int s = sizeOf(head);
-        int f = s-n;
-        if(n==s){
-            head = head->next;
-            return head;
+        ListNode* slow  = head;
+        ListNode* fast  = head;
+        for(int i = 1; i<=n+1; i++){
+            if(fast==nullptr) return head->next;
+            fast = fast->next;
         }
-        ListNode* temp = head;
-        for(int i = 1; i<f; i++){
-            temp = temp->next;
+        while(fast!=nullptr){
+            fast = fast->next;
+            slow = slow->next;
         }
-        cout<<temp->val;
-        // if(temp->next!=nullptr){
-            temp->next = temp->next->next;
-            
-        // }
-        
-        
+        slow->next = slow->next->next;
         return head;
+        
     }
 };
