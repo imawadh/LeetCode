@@ -11,14 +11,14 @@ public:
             } 
             else {
                 // If value exceeds the limit 
-                if (val >= n) {
+                while(val >= n || val%10==9) {
                     val /= 10; 
                 }
                 val++;
                 // If bring the number to its lowest form the go further 
-                while (val % 10 == 0) {
-                    val /= 10;  
-                }
+                // while (val % 10 == 0) {
+                //     val /= 10;  
+                // }
             }
         }
         return ans;
