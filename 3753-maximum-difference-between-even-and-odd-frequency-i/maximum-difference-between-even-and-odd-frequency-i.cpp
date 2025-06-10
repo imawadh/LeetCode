@@ -2,8 +2,7 @@ class Solution {
 public:
     int maxDifference(string s) {
         int maxOddFreq = 0;
-        int maxEvenFreq = INT_MAX;
-        int dif = INT_MIN;
+        int minEvenFreq = INT_MAX;
         map<int,int> mp;
         for(int i =0; i<s.size(); i++){
             mp[s[i]]++;
@@ -17,9 +16,9 @@ public:
 
             }
             else{
-                maxEvenFreq = min(maxEvenFreq,it.second);
+                minEvenFreq = min(minEvenFreq,it.second);
             }
         }
-        return maxOddFreq-maxEvenFreq;
+        return maxOddFreq-minEvenFreq;
     }
 };
