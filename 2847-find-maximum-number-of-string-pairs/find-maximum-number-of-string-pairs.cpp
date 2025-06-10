@@ -15,10 +15,8 @@ public:
             }
             if(st.find(rev)!=st.end()){
                 ans++;
-                cout<<rev<<' '<<words[i]<<'\n';
-                st.erase(words[i]);
             }
         }   
-        return ans;
+        return ans/2;
     }
 };
