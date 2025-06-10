@@ -3,11 +3,20 @@ public:
     int maximumNumberOfStringPairs(vector<string>& words) {
         int ans = 0;
         int n = words.size();
+        set<string> st;
         for(int i =0; i<n; i++){
-            for(int j =i+1; j<n; j++){
-                if(words[i][0]==words[j][1] && words[i][1]==words[j][0]){
-                    ans++;
-                }
+            st.insert(words[i]);            
+        }   
+        for(int i =0; i<n; i++){
+            string rev = words[i];
+            reverse(rev.begin(),rev.end());
+            if(words[i]==rev){
+                continue;
+            }
+            if(st.find(rev)!=st.end()){
+                ans++;
+                cout<<rev<<' '<<words[i]<<'\n';
+                st.erase(words[i]);
             }
         }   
         return ans;
