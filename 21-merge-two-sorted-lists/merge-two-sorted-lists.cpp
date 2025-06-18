@@ -33,7 +33,7 @@ public:
         else{
             temp->next = list1;
         }
-
+        // To avoid the above head created with a value 
         head = head->next;
         return head;
 
