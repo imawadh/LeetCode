@@ -37,6 +37,7 @@ public:
     }
     
     int Rear() {
+        // Agar index ki value 0 hai iska mtlb us jagah pe abhi value insert karna hoga 
         if(idx==0){
             return -1;
         }
