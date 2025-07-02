@@ -9,6 +9,7 @@
  */
 class Solution {
 public:
+// Code to search path from a node to other 
     void path(TreeNode* root, vector<TreeNode*> &v, TreeNode* Search){
         if(root == nullptr){
             return;
@@ -35,17 +36,17 @@ public:
         path(root,qV,q);
         int i = 0;
         int n = min(qV.size(),pV.size());
-        // for(int i =0; i<n; i++){
-        //     if(pV[i]!=qV[i]){
-        //         return pV[i];
-        //     }
-        // }
-        // return pV[n-1];
-        while (i < n && pV[i] == qV[i]) {
-            i++;
+        for(int i =0; i<n; i++){
+            if(pV[i]!=qV[i]){
+                return pV[i-1];
+            }
         }
+        return pV[n-1];
+        // while (i < n && pV[i] == qV[i]) {
+        //     i++;
+        // }
 
-        return pV[i - 1]; 
+        // return pV[i - 1]; 
 
     }
 };
