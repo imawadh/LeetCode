@@ -22,7 +22,7 @@ public:
                  ans = ans->right;
             }
             else{
-                break;
+                return ans;
             }
         }
 
