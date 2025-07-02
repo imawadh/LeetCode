@@ -14,13 +14,14 @@ public:
     void invert(TreeNode* root){
         if(root==nullptr) return;
 
-        invert(root->left);
-        invert(root->right);
-
         TreeNode* left = root->left;        
         TreeNode* right = root->right;     
         root->left=right;
         root->right = left;   
+        
+        invert(root->left);
+        invert(root->right);
+
     }
     TreeNode* invertTree(TreeNode* root) {
         invert(root);
