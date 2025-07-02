@@ -13,15 +13,15 @@ class Solution {
 public:
     void solve(TreeNode* root,vector<string> &ans, string str){
         if(root==nullptr) return;
+        string v = to_string(root->val);
+        str+=v;
         if(root->left==nullptr && root->right==nullptr){
-            string v = to_string(root->val);
-            str+=v;
             ans.push_back(str);
 
         }
-        string v = to_string(root->val);
-        str+=v;
-        str+="->";
+        else{
+            str+="->";
+        }
         solve(root->left,ans,str);
         solve(root->right,ans,str);
         
