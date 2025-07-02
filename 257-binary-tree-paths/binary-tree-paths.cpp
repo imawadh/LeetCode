@@ -30,8 +30,7 @@ public:
     }
     vector<string> binaryTreePaths(TreeNode* root) {
         vector<string> ans;
-        string str = "";
-        solve(root,ans,str);
+        solve(root,ans,"");
         return ans;
 
     }
