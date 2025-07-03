@@ -10,37 +10,26 @@
  * };
  */
 class Solution {
-private: 
-    vector<vector<int>> ans;
-
-    void helper(TreeNode* root,queue<TreeNode*> q){
-        while(!q.empty()){
-            
-            int size = q.size();
-            vector<int> v;
-            for(int i = 0; i<size; i++){
-                TreeNode* top = q.front();
-                v.push_back(top->val);
-                if(top->left!=nullptr){
-                    q.push(top->left);
-                }
-                 if(top->right!=nullptr){
-                    q.push(top->right);
-                }
-                q.pop();
-            }
-            ans.push_back(v);
-
-        }
-    }
 public:
-    vector<vector<int>> levelOrder(TreeNode* root) {
-        if (root==nullptr) return ans;
-        queue<TreeNode*> q;
-        q.push(root);
-        helper(root,q);
+    int levels(TreeNode* root){
+        if(root==nullptr) return 0;
+        return 1 + max(levels(root->left),levels(root->right)); 
+    }
+    void pushElements(TreeNode* root, vector<vector<int>>&v, int curr){
+        if(root==nullptr) return;
+        v[curr-1].push_back(root->val);
+        pushElements(root->left,v,curr+1);
+        pushElements(root->right,v,curr+1);
 
-        return ans;
+
+    }
+    vector<vector<int>> levelOrder(TreeNode* root) {
+        int l = levels(root);
+        //vector<vector<int>> v(l,vector<int>); If the inner vector 
+        vector<vector<int>> v(l);
         
+        pushElements(root,v,1);
+
+        return v;
     }
 };
