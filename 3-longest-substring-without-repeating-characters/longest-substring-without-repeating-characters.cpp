@@ -4,19 +4,19 @@ public:
         if(s=="") return 0;
         set<char>st;
         int ans = 1;
-        deque<char> dq;
+        queue<char> q;
         for(int i =0 ;i<s.size(); i++){
             if(st.find(s[i])!=st.end()){
-                while (dq.front() != s[i]) {
-                    st.erase(dq.front());
-                    dq.pop_front();
+                while (q.front() != s[i]) {
+                    st.erase(q.front());
+                    q.pop();
                 }
-                st.erase(dq.front()); 
-                dq.pop_front();
+                st.erase(q.front()); 
+                q.pop();
             }
             st.insert(s[i]);
-            dq.push_back(s[i]);
-            ans = max((int)dq.size(),ans);
+            q.push(s[i]);
+            ans = max((int)q.size(),ans);
         }
         return ans;
     }
