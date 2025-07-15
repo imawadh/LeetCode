@@ -1,10 +1,10 @@
 class Solution {
 public:
     vector<int> spiralOrder(vector<vector<int>>& v) {
-        int i = 0;
-        int j = 0;
-        int r = v.size();
-        int c = v[0].size();
+        int i = 0; // Currnt row
+        int j = 0; // currnet columns
+        int r = v.size(); // remaining rows 
+        int c = v[0].size(); // remaing columns 
         vector<int> ans;               
         while(r>1 && c>1){
             for(int k = 1; k<c; k++){
