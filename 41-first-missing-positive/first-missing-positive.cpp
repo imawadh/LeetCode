@@ -9,9 +9,9 @@ public:
                 long long idx = (long long)nums[i]-1;
                 long long val = (long long)nums[i];
 
-                if(idx<0 || idx>=n) break;
+                if(idx<0 || idx>=n) break; //  it means that particular number is not in range to keep in the array 
 
-                if(nums[idx]!=val){
+                if(nums[idx]!=val){ // if duplicate will be there there will be infinite loop 
                      swap(nums[i],nums[idx]);
                 }
                 else{
