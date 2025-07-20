@@ -11,7 +11,6 @@ public:
         for(int i =0; i<n; i++){
             if(matrix[i][0]==0){
                 colFlag = true;
-                break;
             }
         }
 
@@ -19,7 +18,6 @@ public:
         for(int i =0; i<m; i++){
             if(matrix[0][i]==0){
                 rowFlag = true;
-                break;
             }
         }
 
