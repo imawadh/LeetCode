@@ -1,14 +1,14 @@
 class Solution {
 public:
     void setZeroes(vector<vector<int>>& matrix) {
-        set<pair<int,int>> st;
+        vector<pair<int,int>> st;
         int n = matrix.size();
         int m = matrix[0].size();
 
         for(int i = 0; i<n; i++){
             for(int j = 0; j<m; j++){
                 if(matrix[i][j]==0){
-                    st.insert(make_pair(i,j));
+                    st.push_back(make_pair(i,j));
                 }
             }
         }
