@@ -16,10 +16,10 @@ public:
             }
             return;
         }
-        generateSubset(nums, v, idx+1);
         v.push_back(nums[idx]);
         generateSubset(nums, v, idx+1);
         v.pop_back();
+        generateSubset(nums, v, idx+1);
     }
     int countMaxOrSubsets(vector<int>& nums) {
         vector<int> v;
