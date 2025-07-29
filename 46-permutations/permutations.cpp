@@ -1,35 +1,28 @@
 class Solution {
-private:
-    int fact(int n){
-        if(n<=1){
-            return 1;
-        }
-        return n*fact(n-1);
-    }
 public:
     vector<vector<int>> ans;
-    vector<vector<int>> permute(vector<int>& nums) {
-        sort(nums.begin(),nums.end());
-        ans.push_back(nums);
-        int n = nums.size();
-        int tPer = fact(n);
-        
-        for(int k =0; k<tPer; k++){
-            for(int j = n-2; j>=0; j--){
-                if(nums[j]<nums[j+1]){
-                    int nextIdx = j+1;
-                    for(int k = j+1;k<n ;k++){
-                        if(nums[k]>nums[j] && nums[k]<=nums[nextIdx]){
-                            nextIdx = k;
-                        }
-                    }
-                    swap(nums[j],nums[nextIdx]);
-                    reverse(nums.begin()+j+1,nums.end());
-                    ans.push_back(nums);
-                    break;
+
+    void permutations(vector<int> input, vector<int> output) {
+        if(input.size() == 0){
+            ans.push_back(output);
+            return;
+        }
+        for(int i = 0; i < input.size(); i++){
+            vector<int> newInput;
+            for(int j = 0; j < input.size(); j++){
+                if(j != i){  // remove only the element at index i
+                    newInput.push_back(input[j]);
                 }
             }
+            output.push_back(input[i]);
+            permutations(newInput, output);
+            output.pop_back();  // backtrack
         }
+    }
+
+    vector<vector<int>> permute(vector<int>& nums) {
+        vector<int> output;
+        permutations(nums, output);
         return ans;
     }
 };
