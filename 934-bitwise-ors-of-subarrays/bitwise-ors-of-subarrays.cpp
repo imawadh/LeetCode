@@ -11,7 +11,7 @@ public:
                 helper.insert(arr[i]|it);
             }
             pre = helper;
-            st.insert(helper.begin(),helper.end());
+            st.insert(pre.begin(),pre.end());
         
         }
         return st.size();
