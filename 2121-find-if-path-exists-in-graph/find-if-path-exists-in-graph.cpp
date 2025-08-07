@@ -1,30 +1,37 @@
 class Solution {
 public:
-    bool helper(int source, int destination, vector<vector<int>>& adj,set<int>&st ){
-        if(source==destination){
-            return true;
-        }
-        st.insert(source);
-        for(auto neighbour: adj[source]){
-            if(st.find(neighbour)==st.end()){
-                bool res = helper(neighbour,destination,adj,st);
+    bool dfs(vector<vector<int>>&adj, int curr, int des,vector<bool>&visited){
+        
+        if(curr==des) return true;
+
+        visited[curr] = true;
+        for(auto  it: adj[curr]){
+            if(visited[it]==false) {
+                bool res = dfs(adj,it,des,visited);
                 if(res) return true;
             }
         }
+        // visited[curr] = false;
         return false;
     }
     bool validPath(int n, vector<vector<int>>& edges, int source, int destination) {
-
-        vector<vector<int>> adj(n);
-        for (auto& edge : edges) {
-            int u = edge[0];
-            int v = edge[1];
-            adj[u].push_back(v);
-            adj[v].push_back(u);
+        vector<vector<int>>adj(n,vector<int>());
+        for(int i =0; i<edges.size(); i++){
+            int src = edges[i][0];
+            int des = edges[i][1];
+            adj[src].push_back(des);
+            adj[des].push_back(src);
         }
 
-        set<int> st;
-        return helper(source,destination,adj,st);
+        // for(int i = 0; i<n; i++){
+        //     cout<<i<<" : ";
+        //     for(auto it:adj[i]){
+        //         cout<<it<<' ';
+        //     }
+        //     cout<<"\n";
+        // }
 
+        vector<bool> visited(n,false);
+        return dfs(adj,source,destination,visited);
     }
 };
