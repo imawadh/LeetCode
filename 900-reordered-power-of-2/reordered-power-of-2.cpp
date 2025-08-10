@@ -22,9 +22,7 @@ public:
     }
 
     bool reorderedPowerOf2(int n) {
-        if(n<=2) return true;
-        // if(!((n)&(n-1))) return true;
-
+     
         vector<int> v;
         while(n){
             v.push_back(n%10);
