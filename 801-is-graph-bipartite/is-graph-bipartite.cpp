@@ -4,7 +4,7 @@ public:
         int n = graph.size();
     
         vector<char> visitedWithColor(n,'.');
-
+        // This is for forest graph .....
         for(int i = 0; i<n; i++){
             if(visitedWithColor[i]=='.'){
                 queue<int> q;
@@ -12,7 +12,7 @@ public:
 
                 visitedWithColor[i] = 'R';
                 char color = 'R';
-
+                // Current egde ke saare node ko color assign karna .... 
                 while(q.size()){
                     int edge = q.front();
                     q.pop();
