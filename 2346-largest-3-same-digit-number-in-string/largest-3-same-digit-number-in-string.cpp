@@ -6,7 +6,7 @@ public:
             ch = ch + ch + ch;
             cout<<ch<<'\n'; 
             for(int i = 2; i<num.size(); i++){
-                if(ch[0]==num[i] && ch[0]==num[i-1] && ch[0]==num[i-2]){
+                if(ch[2]==num[i] && ch[1]==num[i-1] && ch[0]==num[i-2]){
                     return ch;
                 }
             }
