@@ -7,7 +7,7 @@ public:
         int b = -1;
         int l = m;
         int r = -1;
-        // For 
+        // For all the possibiliies of top bottom left and right 
         bool flag = false;
         for(int i =0; i<n; i++){
             for(int j = 0;j<m; j++){
