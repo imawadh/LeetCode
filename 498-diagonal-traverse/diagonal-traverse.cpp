@@ -2,7 +2,7 @@ class Solution {
 public:
     vector<int> ans;
     bool reverseArr = false;
-    void rowSolve(vector<vector<int>>& mat, int cr,int cc, int c){
+    void solve(vector<vector<int>>& mat, int cr,int cc, int c){
 
         vector<int>v;
         while(cr>=0 && cc<c ){
@@ -27,11 +27,11 @@ public:
         int n = mat.size();
         int m = mat[0].size();
         for(int i = 0; i<n; i++){
-            rowSolve(mat,i,0,m);
+            solve(mat,i,0,m);
         }
 
         for(int j = 1; j<m; j++){
-            rowSolve(mat,n-1,j,m);
+            solve(mat,n-1,j,m);
         }
 
         return ans;
