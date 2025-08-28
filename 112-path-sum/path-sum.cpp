@@ -12,17 +12,17 @@
 class Solution {
 
 public:
-    bool solve(TreeNode* root, int targetSum){
+    bool solve(TreeNode* root, int targetSum, int currSum){
         
         if(root==nullptr) return false;
-        if(root->left==nullptr && root->right==nullptr && targetSum==root->val) return true;
+        currSum += root->val;
+        if(root->left==nullptr && root->right==nullptr && targetSum==currSum) return true;
 
-
-        return solve(root->left, targetSum-root->val)||solve(root->right,targetSum-root->val);
+        return solve(root->left, targetSum,currSum)||solve(root->right,targetSum, currSum);
 
     }
     bool hasPathSum(TreeNode* root, int targetSum) {
         
-        return solve(root, targetSum);
+        return solve(root, targetSum,0);
     }
 };
