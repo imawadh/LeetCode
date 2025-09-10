@@ -1,15 +1,11 @@
 class Solution {
 public:
     bool check(int a){
-        int zCount = 0;
         while(a){
             if(a%10==0){
-                zCount++;
+                return false;
             }
             a = a/10;
-        }
-        if(zCount){
-            return false;
         }
         return true;
     }
