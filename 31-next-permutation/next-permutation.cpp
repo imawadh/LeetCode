@@ -1,33 +1,25 @@
 class Solution {
 public:
-    void nextPermutation(vector<int>& nums) {
-        
-        int n = nums.size();
-
-        for(int i = n-2; i>=0; i--){
-            // find the find place where nums[i]<nums[i+1] for array to be increasing 
-            if(nums[i]<nums[i+1]){
-                int j = i+1;
-                // finding the nearest greater integer 
-                while(j<n && nums[j]>nums[i]){
-                    j++;
-                }
-                // swap and revere the aray now .... 
-                swap(nums[j-1],nums[i]);
-                // reverse(nums.begin()+i+1, nums.end());
-                i = i+1;
-                j = n-1;
-                while(i<j){
-                    swap(nums[i],nums[j]);
-                    i++;
-                    j--;
-                }
-                return;
+    void nextPermutation(vector<int>& v) {
+        int pivot = -1;
+        for(int i = v.size()-2;i>=0; i--){
+            if(v[i]<v[i+1]){
+                pivot = i;
+                break;
             }
         }
-
-
-
-        reverse(nums.begin(),nums.end());
+        if(pivot==-1){
+            reverse(v.begin(),v.end());
+            return;
+        }
+        
+        int i = pivot;
+        for(int j = v.size() - 1; j > pivot; j--) {
+            if (v[j] > v[pivot]) {
+                swap(v[pivot], v[j]);
+                break;
+            }
+        }
+        reverse(v.begin()+pivot+1,v.end());
     }
-};
+};  
