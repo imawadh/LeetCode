@@ -16,6 +16,8 @@ public:
     int fib(int n) {
         if(n<=1) return n;
         vector<int> v(n+1,-1);
+        v[0] = 0;
+        v[1] = 1;
         solve(v,n);
         return v[n];
     }
