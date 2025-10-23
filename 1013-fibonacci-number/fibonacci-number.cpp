@@ -1,17 +1,23 @@
 class Solution {
 public:
-    int solve(vector<int>& v, int n) {
-        if (n <= 1) return n;
+    int solve(vector<int>&v,int n){
 
-        // // Memoization check
-        // if (v[n] != -1) return v[n];
+        // fib(n) = fib(n-1) + fib(n-2);
+        // return v[n];
+        if(n<=1){
+            return n;
+        }
 
-        v[n] = solve(v, n - 1) + solve(v, n - 2);
+        v[n] = solve(v,n-1) + solve(v,n-2);
         return v[n];
+
     }
 
     int fib(int n) {
-        vector<int> v(n + 1, -1);
-        return solve(v, n);
+        if(n<=1) return n;
+        vector<int> v(n+1,-1);
+        solve(v,n);
+        return v[n];
     }
 };
+
