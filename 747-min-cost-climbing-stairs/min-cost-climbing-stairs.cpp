@@ -1,18 +1,26 @@
 class Solution {
 public:
-    int solve(vector<int>& cost, int idx, int n, vector<int>& dp) {
-        if (idx >= n) return 0;
-        if (dp[idx] != -1) return dp[idx];
+    int minimumCost = INT_MAX;
+    int minCost(vector<int>&v, int currentCost,int idx,int n,vector<int>&dp){
+        if(idx>=n){
+            return 0;
+        }
+        if(dp[idx]!=-1){
+            return dp[idx];
+        }else{
+            int onestep = minCost(v,currentCost,idx+2,n,dp);
+            int twostep = minCost(v,currentCost,idx+1,n,dp);
+            dp[idx] = v[idx] + min(onestep,twostep);
+        }
 
-        int oneStep = solve(cost, idx + 1, n, dp);
-        int twoStep = solve(cost, idx + 2, n, dp);
-
-        return dp[idx] = cost[idx] + min(oneStep, twoStep);
+        return dp[idx];
     }
 
     int minCostClimbingStairs(vector<int>& cost) {
+        int currentCost = 0;
         int n = cost.size();
-        vector<int> dp(n, -1);
-        return min(solve(cost, 0, n, dp), solve(cost, 1, n, dp));
+        vector<int> dp(n,-1);
+        minimumCost = min(minCost(cost,0,0,n,dp),minCost(cost,0,1,n,dp));
+        return minimumCost;
     }
 };
