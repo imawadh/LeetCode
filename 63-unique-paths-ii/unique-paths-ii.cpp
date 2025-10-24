@@ -8,8 +8,8 @@ public:
         if(i>=m || j>=n){
             return 0;
         }
-        if(dp[i][j]!=-1) return dp[i][j];
         if(obstacleGrid[i][j]==1) return 0;
+        if(dp[i][j]!=-1) return dp[i][j];
         
         int down = helper(m,n,i+1,j,dp,obstacleGrid);
         int right = helper(m,n,i,j+1,dp,obstacleGrid);
