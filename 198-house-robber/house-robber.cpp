@@ -2,8 +2,11 @@ class Solution {
 public:
     vector<int> dp;
     int ftd(vector<int>& arr, int i){
-        if(i>=arr.size()){
-            return 0;
+        if(i==arr.size()-1){
+            return arr[i];
+        }
+        if(i==arr.size()-2){
+            return max(arr[i],arr[i+1]);
         }
         
         if(dp[i]!=-1) return dp[i];
