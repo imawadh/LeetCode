@@ -1,6 +1,7 @@
 class Solution {
 public:
     void fun(vector<vector<int>>& image, int sr, int sc, int color){
+        // BFS 
         int oldColor = image[sr][sc];
         if(oldColor==color) return;
         queue<pair<int,int>> q;
