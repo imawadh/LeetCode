@@ -10,15 +10,15 @@ public:
             int current =  q.front();
             visited[current] = true;
             q.pop();
-            for(int i = 0; i<n; i++){
-                int rk = rooms[current].size();
-                for(int j = 0; j<rk; j++){
-                    if(!visited[rooms[current][j]]){
-                        visited[rooms[current][j]] = true;
-                        q.push(rooms[current][j]);
-                    }
+            
+            int rk = rooms[current].size();
+            for(int j = 0; j<rk; j++){
+                if(!visited[rooms[current][j]]){
+                    visited[rooms[current][j]] = true;
+                    q.push(rooms[current][j]);
                 }
             }
+            
         }
 
 
