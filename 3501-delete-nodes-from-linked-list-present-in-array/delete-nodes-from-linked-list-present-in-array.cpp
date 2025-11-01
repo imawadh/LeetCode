@@ -17,18 +17,15 @@ public:
             st.insert(nums[i]);
         }
         tempHead->next = head;
-        cout<<tempHead->next->val<<'\n';
         ListNode*  temp = tempHead;
-        cout<<temp->next->val<<'\n';
+        
 
         while(temp->next!=nullptr){
             int val = temp->next->val;
             cout<<val<<" :  ";
             if(st.find(val)!=st.end()){
-                cout<<"found";
                 temp->next = temp->next->next;
             }else{
-                cout<<"not found";
                 temp = temp->next;
             }
         }
