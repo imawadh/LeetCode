@@ -9,8 +9,8 @@ public:
             num = num<<1;
             cout<<num<<' ';
             num+=nums[i];
-            if(num>=5){
-                num =  num%5;
+            if(num>=10){
+                num =  num%10;
             }
             if(num==0 || num==5){
                 ans[i]=true;
