@@ -10,7 +10,7 @@ public:
             int l = nums[i-1];
             int r = nums[n-1]-l;
             cout<<r-l<<' ';
-            if((r-l)%2==0){
+            if((r&1)==(l&1)){
                 ct++;
             }
         }
