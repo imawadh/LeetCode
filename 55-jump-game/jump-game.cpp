@@ -8,8 +8,6 @@ public:
             if(maxCurr>=i){
                 maxCurr = max(maxCurr,nums[i]+i);
             }
-            cout<<maxCurr<<' ';
-
         }
         if(maxCurr>=nums.size()-1){
             ans = true;
